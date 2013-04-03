@@ -1,0 +1,215 @@
+
+test_name: Foglight Smoke Test On win2k3 x86_64(Nightcrawler)
+environment_setup: []
+- name: Install and Start Foglight on windows 2003 x86_64 command line mode
+  cases:
+  - Foglight_Installation/Foglight_Installation.feature
+- name: Install and Deploy OS Cartridge on command line mode
+  cases:
+  - cartridge/Install_Cartridge.feature
+  - cartridge/Deploy_Cartridge.feature
+- name: Create and active OS Agent on command line mode
+  cases:
+  - agent/Create_Agent.feature
+  - agent/Active_Agent.feature
+- name: Install and Deploy IC Cartridge
+  cases:
+  - ui/Administration/Cartridges/Install_Cartridge.feature
+  - ui/Administration/Cartridges/Deploy_Cartridge.feature
+- name: Install WCF Cartridge
+  cases:
+  - ui/Administration/Cartridges/WCF_Car_Install.feature
+- name: Create and active IC agent on command line mode
+  cases:
+  - ui/Administration/Agents/Create_Agent.feature
+  - ui/Administration/Agents/Active_Agent.feature
+
+test_suites: []
+- name: Administration
+  cases:
+  - ui/Administration/Administration/NoUserLogin.feature
+  - ui/About.feature
+  - ui/Administration/Administration/Verification_Links_On_Navigation.feature
+  - ui/Administration/Administration/Verfication_Send_Message_Action.feature
+  - ui/Administration/Administration/Check_Link_On_Administration.feature
+- name: Agents
+  cases:
+  - ui/Administration/Agents/Agent_Hosts.feature
+  - ui/Administration/Agents/Agent_Status.feature
+- name: Cartridges
+  cases:
+  - ui/Administration/Cartridges/Components for Download.feature
+- name: Credentials
+  cases:
+  - ui/Administration/Credentials/Add_Credentials.feature
+  - ui/Administration/Credentials/Manage_Lockboxes.feature
+  - ui/Administration/Credentials/Edit_Credential.feature
+  - ui/Administration/Credentials/Monitor_Credential_Alarms.feature
+  - ui/Administration/Credentials/View_Clients.feature
+- name: Dashboard Development
+  cases:
+  - ui/Administration/Dashboard_Development/Verification_Foglight_Module.feature
+  - ui/Administration/Dashboard_Development/Verification_Screen.feature
+- name: Data
+  cases:
+  - ui/Administration/Data/IntelliProfile.feature
+  - ui/Administration/Data/Create_Derived_Metric.feature
+  - ui/Administration/Data/Create_Threshold.feature
+  - ui/Administration/Data/Derived_Metrics_Diagnostics.feature
+  - ui/Administration/Data/Manage_Derived_Metrics.feature
+  - ui/Administration/Data/Manage_Retention_Policies.feature
+  - ui/Administration/Data/Manage_Thresholds.feature
+  - ui/Administration/Data/Topology_Type.feature
+- name: Rules & Notifications
+  cases:
+  - ui/Administration/Rules_And_Notifications/Add_Registry_Variables.feature
+  - ui/Administration/Rules_And_Notifications/Check_Registry_Value.feature
+  - ui/Administration/Rules_And_Notifications/Create_Rule.feature
+  - ui/Administration/Rules_And_Notifications/Manage_Registry_Variables.feature
+  - ui/Administration/Rules_And_Notifications/Rule_Diagnostics.feature
+  - ui/Administration/Rules_And_Notifications/Rule_Management.feature
+#- name: Schedules
+#  cases:
+#  - ui/Administration/Schedules/Create_Schedule.feature
+- name: Setup & Support
+  cases:
+  - ui/Administration/Setup_And_Support/Verification_Blackouts_Screen.feature
+  - ui/Administration/Setup_And_Support/Create_A_One_Time_Blackout.feature
+  - ui/Administration/Setup_And_Support/Create_Scheduled_Blackout.feature
+  - ui/Administration/Setup_And_Support/Manage_Blackouts.feature
+  - ui/Administration/Setup_And_Support/Email_Configuration.feature
+  - ui/Administration/Setup_And_Support/Manage_Licenses.feature
+  - ui/Administration/Setup_And_Support/Manage_Support_Bundles.feature
+  - ui/Administration/Setup_And_Support/Connection_Status.feature
+  - ui/Administration/Setup_And_Support/Management_Server_Configuration.feature
+  - ui/Administration/Setup_And_Support/Usage_Feedback.feature
+  - ui/Administration/Setup_And_Support/View_Blackouts_by_Agent.feature
+  - ui/Administration/Setup_And_Support/View_Blackouts_by_Object.feature
+- name: Tooling
+  cases:
+  - ui/Administration/Tooling/Script_Console.feature
+  - ui/Administration/Tooling/Script_Agent_Builder.feature
+  - ui/Administration/Tooling/Manage_Host_Aliasing_Rules.feature
+- name: Users & Security
+  cases:
+  - ui/Administration/Users_And_Security/Verification_Screen.feature
+  - ui/Administration/Users_And_Security/Add_Users.feature
+  - ui/Administration/Users_And_Security/Test_New_User_Password.feature
+  - ui/Administration/Users_And_Security/User_Search.feature
+  - ui/Administration/Users_And_Security/Manage_Roles.feature
+  - ui/Administration/Users_And_Security/Manage_Groups.feature
+  - ui/Administration/Users_And_Security/Manage_Users.feature
+  - ui/Administration/Users_And_Security/Directory_Services_Settings.feature
+  - ui/Administration/Users_And_Security/User_Session_Settings.feature
+  - ui/Administration/Users_And_Security/Password_Policy_Settings.feature
+- name: Homes
+  cases:
+  - ui/Homes/Welcome/Check_Foglight_Screen.feature
+  - ui/Homes/Welcome/Configure_Alarm_Reporting_And_Blackouts.feature
+  - ui/Homes/Welcome/View_Your_Enterprise_Health.feature
+   - ui/Homes/Overview_On_Home.feature
+- name: Hosts
+  cases:
+  - ui/Hosts/Hosts/Manage_Host.feature
+  - ui/Hosts/Hosts/Add_Monitored_Hosts.feature
+  - ui/Hosts/Active_Hosts_Summary.feature
+  - ui/Hosts/Host_Browser.feature
+  - ui/Hosts/Host_Monitor.feature
+  - ui/Hosts/Host_Resource.feature
+#- name: Infrastructure
+#  cases:
+#  - ui/Infrastructure/Overview.feature
+- name: Management server
+  cases:
+  - ui/Management_Server/Agents_On_All_Hosts.feature
+  - ui/Management_Server/Diagnostic/Agent_Manager.feature
+  - ui/Management_Server/Diagnostic/Log_Analyzer.feature
+  - ui/Management_Server/Diagnostic/Performance.feature
+  - ui/Management_Server/Servers/Data_Management.feature
+  - ui/Management_Server/Servers/Database_Overview.feature
+  - ui/Management_Server/Servers/Management_Server_View.feature
+  - ui/Management_Server/Servers/Persistence_Handler_Overview.feature
+- name: Reports
+  cases:
+  - ui/Reports/BuildACustomReport.feature
+#  - ui/Reports/RunAReport.feature
+#  - ui/Reports/RunAScheduleReport.feature- name: Administration
+- name: Services
+  cases:
+  - ui/Services/Object_Groups/Manage_Object_Groups.feature
+  - ui/Services/Service_Builder/Add_Category.feature
+  - ui/Services/Service_Operations_Console/Service_Operations_Console.feature
+  - ui/Services/Tier_Definition/Tier_Definition.feature
+  - ui/Services/Object_Groups/Manage_Object_SubGroups.feature
+  - ui/Services/Service_Builder/Manage_Category.feature
+  - ui/Services/Object_Groups/Delete_object_groups.feature
+- name: WCF(Bean Inputs)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Bean_Inputs/560/Bean_Cell_Input_Tables/Dialog_Cell_Edit_Bean_Table.feature
+  - WCF/WCF_Regression_Cartridge/Bean_Inputs/560/Event_Form/Event_Form.feature
+- name: WCF(Containers)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Containers/Switch/556/Switch_by_Value/Switch_by_Value.feature
+  - WCF/WCF_Regression_Cartridge/Containers/Switch/556/Switch_to/Switch_to.feature
+  - WCF/WCF_Regression_Cartridge/Containers/Titled_Columns/Wizard/524/Grid_for_Wizard.feature
+  - WCF/WCF_Regression_Cartridge/Containers/Titled_Columns/Wizard/562/big_wizard2.feature
+- name: WCF(Flow_types)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Flow_types/550/Flow_types_grid.feature
+- name: WCF(Metric_Indicators)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Cylinder/550/Cylinders_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Flow_Gauge/550/Flow_Gauges_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Horizontal_Bar/550/Horizontal_Bars_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Metric_History_Table/550/History_Table_(list_of_metrics).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Metric_History_Table/550/History_Table_(one_metric).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Metric_Indicator/550/Metric_Indicators_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Metric_List/550/Metric_List_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Spinner/550/Spinners_(grid).feature
+  - WCF/WCF_Regression_Cartridge/Metric_Indicators/Vertical_Bar/550/Vertical_Bars_(grid).feature
+- name: WCF(Others)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Others/Links_Box/520/LinksBox.feature
+- name: WCF(Table_and_Trees)
+  cases:
+  - WCF/WCF_Regression_Cartridge/Table_and_Trees/Row_Oriented_Table/520/Row_OrientedTable1AutoWidth.feature
+  - WCF/WCF_Regression_Cartridge/Table_and_Trees/Row_Oriented_Table/520/RowOrientedTable.feature
+  - WCF/WCF_Regression_Cartridge/Table_and_Trees/Tree_Table/562/TreeTable.feature
+#- name: DB Integration
+#  cases:
+#  - ui/Administration/Cartridges/DB_Oracle_Car_Install.feature
+#  - DB_Integration/Oracle/AutoDiscovery/Add_Instance_Manually_without_StealthCollect.feature
+#  - DB_Integration/Oracle/AutoDiscovery/Add_Instance_Manually_without_StealthCollect_New_FMS.feature
+#  - DB_Integration/Oracle/Global_View/Global_View.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Alarms.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Alert_Log.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Collection_Frequencies.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Collection_Settings.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Connection_Details.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Listeners.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/On-demand_Data_Port.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/Retention_Policies.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/StealthCollect.feature
+#  - DB_Integration/Oracle/Global_Admin_Agent_Admin/User-defined_Collections.feature
+#  - DB_Integration/Oracle/Global_View/Global_View_with_HomePageIcon.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-Event_Categories_Breakdown.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-Locks.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-Sessions.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-Top_SQL_Statements.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-Usability.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Activity-User_defined_Collections.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/IO_Screens-IO.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/IO_Screens-Overall_Datafiles_IO_Activity.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Archive_Logs.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Database_Backup.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Invalid_Objects.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Redo_and_Archive_Performance.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Tablespaces_and_Datafiles.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Storage-Redo_Logs.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Configuration-Alert_Log.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Configuration-Initialization_Parameters.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Memory-SGA.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Cluster-Cluster.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/ErrorLog-Error_Log.feature
+#  - DB_Integration/Oracle/Instance_And_RAC/Instance_with_no_PA/Home_Page.feature
+#test_suites: []

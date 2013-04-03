@@ -1,0 +1,17 @@
+# use ',' to split every receiver
+# mail_setting -> cc is optional
+
+---
+server_setting:
+  address: relay.prod.quest.corp
+  port: 25
+  domain: foglight.com
+mail_setting:
+  from: ZHQA.Automation@quest.com
+  to: yammy.chen@quest.com
+#  cc: mark.liu@quest.com
+#  ,Ryan.li@quest.com,Jacin.Peng@quest.com,Bella.zhao@quest.com
+#  to: QDL.RD.Foglight.Server.QA.Team.Zhuhai@quest.com,Flora.Li@quest.com
+#  cc: QDL.RD.Foglight.WCF.QA.Team.Zuhai@quest.com,Ryan.Li@quest.com
+#  to: QDL.RD.Foglight.Server.QA.Team.Zhuhai@quest.com
+#  cc: Nils.Meier@quest.com,Geoff.Vona@quest.com,Derek.Raycraft@quest.com,Paul.Sahota@quest.com,David.AhChong@quest.com,Dmitri.Bourlatchkov@quest.com,Ryan.li@quest.com,QDL.RD.Foglight.WCF.QA.Team.Zuhai@quest.com

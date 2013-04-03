@@ -1,0 +1,22 @@
+---
+# you can edit the following location to change the location of test report
+# if it's not set, the report will be stored in WORKBOT_ROOT/reports by default
+reports_root: Y:/Foglight
+
+# the following parameters are to configure the FTP server
+ftp_server: 10.30.
+
+# the parameters below will store in the variant @context and available for step definitions
+host: 10.30.149.142
+agent_host: yammy_win2k364
+server: "http://10.30.149.142:8080"
+default: {user: "foglight", password: "foglight"}
+
+foglight_installation_path: C:/Quest_Software/Foglight
+
+# here to configure your FMS or FglAM install information
+test_machines:
+- name: FMS
+  host: yammy_win2k364
+  log_path: C:/Quest_Software/Foglight/logs/
+  type: normal

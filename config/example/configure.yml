@@ -1,0 +1,52 @@
+---
+################################################################################################
+#
+# the parameters below will be stored in the variant $context and available for step definitions
+#
+################################################################################################
+
+browser: ff
+profile: win2k364
+# you can edit the path to change the location of test report
+# if it's not set, the report will be stored in WORKBOT_ROOT/reports by default
+reports_root: #Y:/Foglight
+
+# The IP or host name of FTP server
+ftp_server: 10.30.149.9
+
+# The FMS host
+host: 10.30.147.160
+
+# Agent host
+agent_host: jfeng-576nyauwu
+
+# The URL to access Foglight
+server: "http://10.30.147.160:8080"
+
+# Set the default user name and password to login Foglight
+default: { user: "foglight", password: "foglight" }
+
+# Specific where to install Foglight
+foglight_installation_path: C:/Quest_Software/Foglight
+
+product_installation_path: C:/Quest_Software/Foglight
+product_bin_path: C:/Quest_Software/Foglight/product/*build_number*/bin
+product_log_path: C:/Quest_Software/Foglight/state/logs
+
+fogflsw01:
+  protocol: ftp
+  server: 10.30.149.9
+  "user name": foglight
+  password: foglight
+fogflsw02:
+  protocol: ftp
+  server: 10.30.154.45
+  "user name": foglight
+  password: foglight
+
+
+test_machines:
+- name: FMS
+  host: 10.30.147.160
+  log_path: C:/Quest_Software/Foglight/state/logs/
+

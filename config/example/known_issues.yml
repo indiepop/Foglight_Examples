@@ -1,0 +1,23 @@
+#
+# Here is the config file for known issues, you can specific the issue ID, match_data and the URL for more information
+#
+# Parameters:
+#
+#   issue:      specific the issue ID here, in most case it's a JIRA issue number
+#   match_data: this is a Regular Expression to match the error message, if this match the error message, the failed
+#               scenario will marked as CPASS
+#
+# Examples:
+#
+# ---
+# issues: []
+# - issue: FGLUI-12000
+#   match_data: ^StandardError
+# - issue: WCF-221
+#   match_data: ERROR
+# - issue: FOGQA-10
+#   match_data: ERROR
+#
+
+---
+issues: []
