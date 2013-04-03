@@ -1,0 +1,35 @@
+<!DOCTYPE types SYSTEM "../dtd/topology-types.dtd">
+<types>
+
+	<type name='Movie' extends='TopologyObject'>
+		<property name='id' type='String' is-identity='true'/>
+		<property name='name' type='String' is-containment='true'/>
+		<property name='femininelead' type='MovieFeminineLead' is-identity='true'/>
+		<property name='hero' type='MovieHero' is-containment='true'/>
+		<property name='story' type='MovieStory' is-identity='true'/>
+		<property name='background' type='MovieBackground' is-containment='true'/>
+	</type>
+	
+	<type name='MovieFeminineLead' extends='TopologyObject'>
+		<property name='name' type='String' is-containment='true'/>
+		<property name='movie' type='Movie'/>
+	</type>
+	
+	<type name='MovieHero' extends='TopologyObject'>
+		<property name='name' type='String' is-containment='true'/>
+		<property name='movie' type='Movie'/>
+	</type>
+	
+	<type name='MovieStory' extends='TopologyObject'>
+		<property name='id' type='String' is-identity='true'/>
+		<property name='name' type='String' is-containment='true'/>
+		<property name='movie' type='Movie'/>
+	</type>
+	
+	<type name='MovieBackground' extends='TopologyObject'>
+		<property name='id' type='String' is-identity='true'/>
+		<property name='name' type='String' is-containment='true'/>
+		<property name='movie' type='Movie'/>
+	</type>
+	
+</types>

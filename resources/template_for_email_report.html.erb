@@ -1,0 +1,178 @@
+<%
+  def humanize(word)
+    word.to_s.gsub(/_id$/, "").gsub(/_/, " ").capitalize
+  end
+%>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Test results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <script type="text/javascript">
+    // <![CDATA[
+
+    // ]]>
+  </script>
+  <style type="text/css">
+    body { font-family: verdana, Gill, Helvetica, sans-serif; font-size: 12px; color: #111111; background: #FFFFFF }
+    a { text-decoration: none }
+
+    table tr td { font-size: 13px; background:#FFFFFF }
+    table tr th.suite    { width:450px; font-size: 12px }
+    table tr th.result   { width:80px; font-size: 12px }
+    table tr th.duration { width:100px; font-size: 12px }
+    table tr th.status   { width:120px; font-size: 12px }
+    table tr th.detail   { width:120px; font-size: 12px }
+    table tr th.remark   { width:120px; font-size: 12px }
+    table tr td.suite    {  }
+    table tr td.result   { text-align:center }
+    table tr td.duration {  }
+    table tr td.status   {  }
+    table tr td.detail   { text-align:center }
+    table tr td.remark   {  }
+    .row_title { font-size: 12px; font-weight: bold; width:200px; background:#EEE; }
+    .failed { background: #FF2212; }
+    .passed { background: #44BF1B; }
+    .pending { background: #A4A4A4;}
+    .example_group { border: 1px solid #333333; border-collapse: collapse; }
+    .example_group td, .example_group th { padding: 4px 6px 4px 6px; }
+    .test_results td { padding: 5px; border: 1px solid #333333; }
+    .test_results th { padding: 5px; border: 1px solid #333333; background: #EEE }
+    .test_results { border-collapse: collapse; border: 1px solid #000000; }
+    .summary_title { font-size: 12px; font-weight:bold; background:#EEE; width:100px }
+</style>
+</head>
+<body>
+  <h2><%= title_info["title"] %> <%= title_info["date"] %>/ <%= title_info["time"] %></h2>
+  <hr />
+  <!--h3>Platform</h3>
+    <table border='0' cellpadding='0' cellspacing='0' class='test_results'>
+      <%# platform_info.each do |param| %>
+        <tr>
+          <td class="row_title"><%#= param['key'] %>: </td>
+          <td><%#= param['value'] %> </td>
+        </tr>
+       <%# end %>
+    </table-->
+  <h3>Foglight</h3>
+    <table border='0' cellpadding='0' cellspacing='0' class='test_results'>
+      <% environment.each do |param| %>
+        <tr>
+          <td class="row_title"><%= param['key'] %>: </td>
+          <td><%= param['value'] %> </td>
+        </tr>
+      <% end %>
+    </table>
+  <hr />
+  <h3>Test Summary</h3>
+  <table border='0' cellpadding='0' cellspacing='0' class='test_results'>
+    <tr>
+      <td class='summary_title'>Status:</td>
+      <td>
+       <table style='width:100%; border-collapse: collapse;' border='0' cellspacing='0' cellpadding='0'>
+          <tr style='height:6px; font-size:6px; line-height:6px;'>
+            <% if @success_percent != 0 %>
+              <td class='passed' style='width:<%= @success_percent%>%; font-size:6px'>&nbsp;</td>
+            <% end %>
+            <% if @cpass_percent != 0 %>
+              <td style='width:<%= @cpass_percent%>%; background:yellow; font-size:6px'>&nbsp;</td>
+            <% end %>
+            <% if @failure_percent != 0 %>
+              <td class='failed' style='width:<%= @failure_percent%>%; background:red;'></td>
+            <% end %>
+           <% if @pending_percent != 0 %>
+              <td class='pending' style='width:<%= @pending_percent%>%; background:blue;'></td>
+            <% end %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class='summary_title'>Summary</td>
+      <td>scenarios:<span style='background:white'>[<%= @total_cases%>]</span>
+          passed:<span class='passed'>[<%= @passed_cases%>]</span>
+          cpass:<span style='background:yellow'>[<%= @cpass_cases%>]</span>
+          failed:<span class='failed'>[<%= @failed_cases%>]</span>
+          pending:<span class='pending'>[<%= @pending_cases%>]</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='summary_title'>Logs</td>
+      <td>
+        <a href='log.log'>Check Log</a>
+      </td>
+    </tr>
+	  <tr>
+      <td class='summary_title'>Support Bundle</td>
+      <td>
+        <a href='support_bundle.zip'>support bundle</a>
+      </td>
+    </tr>
+    <tr>
+      <td class='summary_title'>Total time</td>
+      <td>
+        <% if @total_time > 3600 %>
+          <%= Time.at(@total_time).gmtime.strftime(' %Hh %Mm %Ss').sub(" 0", "").strip %>
+        <% elsif 60 > @total_time %>
+          <%= Time.at(@total_time).gmtime.strftime(' %Ss').sub(" 0", "").strip %>
+        <% elsif 3600 > @total_time %>
+          <%= Time.at(@total_time).gmtime.strftime(' %Mm %Ss').sub(" 0", "").strip %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <% tests.each do |name, result| %>
+  <%
+    has_issue = false
+    result.each do |item|
+      has_issue = true unless item["known_issue_ids"].empty?
+    end
+  %>
+  <h3><%= humanize(name) %></h3>
+  <table border='0' cellpadding='0' cellspacing='0' class='test_results'>
+    <tr>
+      <th class='suite'>Scenario</th>
+      <th class='result'>Result</th>
+      <th class='duration'>Duration</th>
+      <th class='status'>Status</th>
+      <th class='detail'>Detail</th>
+      <% if has_issue %>
+        <th class='remark'>Remark</th>
+      <% end %>
+    </tr>
+    <% result.each do |item| %>
+      <tr>
+         <td><%= item["suite_name"]%></td>
+         <td style='background: <%= get_passed_bg_color(item)%> '><%= get_passed(item)%></td>
+         <td>
+
+           <% if item["duration"] > 3600 %>
+             <%= Time.at(item["duration"]).gmtime.strftime(' %Hh %Mm %Ss').sub(" 0", "").strip %>
+           <% elsif 60 > item["duration"] %>
+             <%= Time.at(item["duration"]).gmtime.strftime(' %Ss').sub(" 0", "").strip %>
+           <% elsif 3600 > item["duration"] %>
+             <%= Time.at(item["duration"]).gmtime.strftime(' %Mm %Ss').sub(" 0", "").strip %>
+           <% end %>
+
+         </td>
+         <td><%= get_case_status(item)%></td>
+         <td><a href='http://auto-server/reports/Foglight/<%= title_info["title"] %>/<%= title_info["date"] %>/<%= title_info["time"] %>/details/<%= name %>/<%= item["suite_name"] %>.html'>detail message</a></td>
+         <% if has_issue %>
+           <%
+             links_to_issue = []
+             item["known_issue_ids"].each do |issue_id|
+               links_to_issue << "<a href='http://torbugs.prod.quest.corp/browse/#{issue_id}'>#{issue_id}</a>"
+             end
+           %>
+           <td><%= links_to_issue.join('<br />') %></td>
+         <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+
+</body>
+</html>
